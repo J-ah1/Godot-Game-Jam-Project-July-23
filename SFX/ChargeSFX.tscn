@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxi4iu3566ebm"]
+
+[ext_resource type="AudioStream" uid="uid://byeq4ulripuyv" path="res://SFX/powerUp.wav" id="1_hj65a"]
+[ext_resource type="Script" path="res://SFX/ChargeSFX.gd" id="2_b464o"]
+
+[node name="ChargeSFX" type="AudioStreamPlayer"]
+stream = ExtResource("1_hj65a")
+bus = &"SFX"
+script = ExtResource("2_b464o")

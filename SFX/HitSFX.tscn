@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfaiaxflot1bl"]
+
+[ext_resource type="AudioStream" uid="uid://616m1p3o03vn" path="res://SFX/explosionButQuiet.wav" id="1_w7k8j"]
+[ext_resource type="Script" path="res://SFX/SFXBlip.gd" id="2_e5eqc"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_w7k8j")
+script = ExtResource("2_e5eqc")

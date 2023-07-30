@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dclhomy225ilm"]
+
+[ext_resource type="FontFile" uid="uid://du6yyq7wivk6y" path="res://UI/Itim-Regular.ttf" id="1_gtwib"]
+
+[resource]
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("1_gtwib")
+Label/font_sizes/font_size = 48
+Label/fonts/font = ExtResource("1_gtwib")

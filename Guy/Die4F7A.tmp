@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7r7n6jsxnr2x"]
+
+[ext_resource type="Script" path="res://Guy/DieGuy.gd" id="1_wcwo7"]
+[ext_resource type="Texture2D" uid="uid://bfyk513661508" path="res://Guy/guy_sheet.png" id="2_tfwax"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6fq5n"]
+radius = 38.0
+height = 196.0
+
+[node name="DieGuy" type="RigidBody2D"]
+collision_layer = 8
+gravity_scale = 3.0
+linear_velocity = Vector2(300, 300)
+script = ExtResource("1_wcwo7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(100, -100)
+texture = ExtResource("2_tfwax")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(110, -94)
+shape = SubResource("CapsuleShape2D_6fq5n")

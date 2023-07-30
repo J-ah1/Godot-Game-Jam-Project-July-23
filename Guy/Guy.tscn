@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://xqjgjwcod5a0"]
+
+[ext_resource type="Script" path="res://Guy/Guy.gd" id="1_fpstv"]
+[ext_resource type="Texture2D" uid="uid://cjim6qqoxntl7" path="res://Guy/guySheetUpdated.png" id="2_jqcpa"]
+[ext_resource type="Texture2D" uid="uid://cblrsiuafqfir" path="res://Guy/trash1.png" id="3_cuwqb"]
+[ext_resource type="Texture2D" uid="uid://bhd6madyv2uw1" path="res://Guy/garbageBinButEvenBigger.png" id="4_xepwt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gv0bc"]
+size = Vector2(455.5, 200)
+
+[sub_resource type="Animation" id="Animation_j4sog"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, -145)]
+}
+
+[sub_resource type="Animation" id="Animation_qqbep"]
+resource_name = "dropping"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(20, -145), Vector2(20, -145), Vector2(20, -80)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wnf2"]
+_data = {
+"RESET": SubResource("Animation_j4sog"),
+"dropping": SubResource("Animation_qqbep")
+}
+
+[node name="Guy" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_fpstv")
+
+[node name="GuySprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_jqcpa")
+offset = Vector2(100, -100)
+hframes = 2
+frame = 1
+
+[node name="Item" type="Sprite2D" parent="."]
+position = Vector2(20, -145)
+texture = ExtResource("3_cuwqb")
+centered = false
+
+[node name="Bin" type="Sprite2D" parent="."]
+texture = ExtResource("4_xepwt")
+centered = false
+offset = Vector2(0, -100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-151.25, -100)
+shape = SubResource("RectangleShape2D_gv0bc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5wnf2")
+}

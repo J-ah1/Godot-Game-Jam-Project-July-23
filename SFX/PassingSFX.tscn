@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5kri2scmxci"]
+
+[ext_resource type="AudioStream" uid="uid://dewlprw7uy6i4" path="res://SFX/passing.wav" id="1_kvqna"]
+[ext_resource type="Script" path="res://SFX/SFXBlip.gd" id="2_iduo8"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_kvqna")
+script = ExtResource("2_iduo8")

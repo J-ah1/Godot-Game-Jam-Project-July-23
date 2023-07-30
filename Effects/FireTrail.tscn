@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://5wo8trs5hct8"]
+
+[sub_resource type="Gradient" id="Gradient_lf5wv"]
+offsets = PackedFloat32Array(0, 0.37931, 0.669951, 1)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_56408"]
+gradient = SubResource("Gradient_lf5wv")
+
+[sub_resource type="Curve" id="Curve_u4v33"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.637011), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kxtyu"]
+curve = SubResource("Curve_u4v33")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w13vc"]
+emission_shape = 1
+emission_sphere_radius = 4.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -60.0
+angle_max = 60.0
+scale_min = 50.0
+scale_max = 50.0
+scale_curve = SubResource("CurveTexture_kxtyu")
+color_ramp = SubResource("GradientTexture1D_56408")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_w13vc")
+lifetime = 1.5
+speed_scale = 10.0

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7r7n6jsxnr2x"]
+
+[ext_resource type="Script" path="res://Guy/DieGuy.gd" id="1_wcwo7"]
+[ext_resource type="Texture2D" uid="uid://cjim6qqoxntl7" path="res://Guy/guySheetUpdated.png" id="2_b83cb"]
+[ext_resource type="PackedScene" uid="uid://5wo8trs5hct8" path="res://Effects/FireTrail.tscn" id="3_2siho"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6fq5n"]
+radius = 38.0
+height = 202.0
+
+[node name="DieGuy" type="RigidBody2D"]
+collision_layer = 8
+mass = 10.0
+gravity_scale = 3.0
+max_contacts_reported = 1
+contact_monitor = true
+linear_damp = 0.1
+angular_damp = 1.0
+script = ExtResource("1_wcwo7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(100, -100)
+texture = ExtResource("2_b83cb")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(105, -98)
+shape = SubResource("CapsuleShape2D_6fq5n")
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("3_2siho")]
+position = Vector2(112, -97)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(110, -98)
+scale = Vector2(5.325, 11.475)
+
+[connection signal="body_entered" from="." to="." method="onBodyEntered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="onVisibleOnScreenNotifier2d_ScreenEntered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="onVisibleOnScreenNotifier2d_ScreenExited"]
